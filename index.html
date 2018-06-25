@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" media="screen and (max-width: 768px)" href="css/sm.css" />
+	<link rel="stylesheet" media="screen and (max-width: 320px)" href="css/xs.css" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+</head>
+<body>
+	<section class="wrapper clearfix">
+		<h1>Ранее сохраненные файлы</h1>
+		<div class="file-filter">
+			<div class="file-filter__period">
+				<h3>Выберите период</h3>
+				<input class="file-filter__input file-filter__date__input" type="" name="" placeholder="От" type="date" id="start"/>
+				<span class=""> - </span>
+				<input class="file-filter__input file-filter__date__input" type="" name="" placeholder="До" type="date" id="end"/>
+			</div>
+			<div class="file-filter__type">
+				<h3>Выберите тип</h3>
+				<select class="file-filter__input file-filter__type__input" class="input-text select-main">
+				</select>	
+			</div>
+				<button class="file-filter__button file-filter__button__apply">ПРИМЕНИТЬ</button>
+				<button class="file-filter__button file-filter__button__clear">ОЧИСТИТЬ</button>
+		</div>
+		<div>
+			<hr>
+			<div id="files-list"></div>
+		</div>
+		<div class="upload-file">
+			<label>
+				<input type="file" name="file" id="upload-file-input">
+				<span>ДОБАВИТЬ</span>
+			</label>
+		</div>
+	</section>
+</body>
+	<script src="files.js"></script>
+	<script src="main-js.js"></script>
+	<script id="file-template" type="text/x-handlebars-template">
+			<article class="file-description">
+			<h4>{{format}}</h4>
+			<div class="file-description__main__info">
+				<h5>Дата загрузки:</h5><time>{{date_download}}</time>
+				<h5>Срок хранения:  до</h5><time>{{date_store}}</time>
+				<div class="file-description__name">{{name}}<span class="file-description__size">{{size}}</span></div>
+				<div class="file-description__author">{{author}}</div>
+			</div>
+			<div class="file-description__button__cont">
+				<button class="file-description__btn file-description__btn--download"></button>
+				<button class="file-description__btn file-description__btn--delete" data-id={{id}}></button>
+			</div>
+		</article>
+		<hr>
+	</script>
+	<script id="file-filter-template" type="text/x-handlebars-template">
+		<option value="{{format}}">{{title}}</option>
+	</script>
+</html>
